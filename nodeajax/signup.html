@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <style>
+        .signup {
+            padding-top: 20PX;
+            background: #CCC;
+            width: 300px;
+            height: 50px;
+            margin: 200px auto;
+            text-align: center;
+        }
+        #check{
+            color: rgb(247, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signup">
+        username:<input id='username' type="text" name='username'><br>
+        <span id='check'>重复检测结果</span>
+    </div>
+
+</body>
+<script>
+    var username = document.getElementById('username');
+    var check = document.getElementById('check');
+
+    username.onblur = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/getdata?username=' + (username.value), true)
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var jsondata = JSON.parse(xhr.responseText)
+                check.innerHTML = jsondata.message;
+            }
+
+
+        }
+
+
+
+    }
+</script>
+
+</html>

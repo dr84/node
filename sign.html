@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        div{
+            background: rgb(237, 235, 235);
+            transition: 0.5s;
+            margin: 200px auto;
+            text-align: center;
+            padding: 20px;
+            width: 300px;
+            height: 25px;
+            box-shadow: 0px 0px 20px grey;
+            border-radius: 10px;
+        }
+        #sp{
+            transition: 0.5s;
+            margin: 10px auto;
+            display: none;
+            width: 200px;
+            height: 25px;
+            background: rgb(232, 238, 238);
+        }
+    </style>
+</head>
+
+<body>
+    <div id='box'>
+        用户名:<input type='text' id='ipt'>
+        <span id='sp'></span>
+    </div>
+
+    <script>
+        oipt = document.getElementById('ipt');
+        osp = document.getElementById('sp');
+        obox = document.getElementById('box');
+        oipt.onblur = function () {
+            osp.style.display = 'block';
+            obox.style.height = '50px';
+            var xhr = 'null';
+
+            try {
+                xhr = new XMLHttpRequest;
+            } catch {
+                xhr = new ActiveXObject('Microsoft.XMLHTTP');
+            }
+
+            xhr.open('get', '/sign-ck?username=' + oipt.value, true);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var res_json = JSON.parse(xhr.responseText);
+                    osp.innerHTML = '"' + oipt.value + '"' + res_json.msg;
+
+                }
+            }
+        }
+
+
+        oipt.onfocus = function () {
+            osp.style.display = 'none';
+            obox.style.height = '25px';
+        }
+    </script>
+
+</body>
+
+</html>

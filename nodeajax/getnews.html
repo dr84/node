@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取新闻列表</title>
+    <script src="ajax.js"></script>
+</head>
+
+<body>
+    <button id="btn">news</button>
+    <ul id="ul"></ul>
+
+    <script>
+        var btn = document.getElementById('btn');
+        var ul = document.getElementById('ul');
+
+
+        btn.onclick = function () {
+            var options={
+                method:'GET',
+                url:'/newslist',
+                data:'',
+                success:function (arr) {
+                for (i in arr) {
+                    var li = document.createElement('li')
+                    ul.appendChild(li);
+                    li.innerText = arr[i].title;
+                    i++;
+                }
+            }
+            }
+            ajax(options);
+        }
+    </script>
+</body>
+
+</html>

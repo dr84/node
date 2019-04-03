@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+
+</head>
+
+<body>
+    <button id='gnews'>getnews</button>
+    <ul id="ul"></ul>
+
+    <script>
+        var gnews = document.getElementById('gnews');
+        gnews.onclick = function () {
+            try {
+                var xhr = new XMLHttpRequest;
+            } catch {
+                var xhr = new ActiveObject('Microsoft.XMLHttp')
+            }
+            xhr.open('get', '/getnews', true);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var arr = xhr.responseText
+                    var arr_json = JSON.parse(arr);
+                    var ul=document.getElementById('ul');
+
+                    for (i = 0; i < arr_json.length; i++) {
+                        var li=document.createElement('li')
+                        li.innerHTML = arr_json[i].title;
+						console.log("​xhr.onreadystatechange -> arr_json[i]", arr_json[i])
+                        
+                        ul.appendChild(li);
+                        
+                        
+                        
+                    }
+
+
+                }
+            }
+
+
+
+
+
+        }
+    </script>
+</body>
+
+</html>

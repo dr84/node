@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>loginin</title>
+    <style>
+        div{
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        }
+        #sp{
+            display: block;
+            transition: 0.5s;
+            margin: 10px auto;
+            width: 200px;
+            height: 25px;
+            background: rgb(232, 238, 238);
+        }
+        #btn{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        name: <input type="text" id="username"><br>
+        pa s s: <input type="password" id="password">
+        <button id='btn'>signin</button>
+        <span id='sp'></span>
+    </div>
+
+    <script>
+        ousername = document.getElementById('username');
+        opassword = document.getElementById('password');
+        obtn = document.getElementById('btn');
+        osp = document.getElementById('sp');
+        obtn.onclick = function () {
+            var xhr = null;
+            try {
+                xhr = new XMLHttpRequest;
+            } catch {
+                xhr = new ActiveXObject('Microsoft.XMLHTTP');
+            }
+            xhr.open('get', '/signin?username=' + ousername.value + '&password=' + opassword.value, true);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+
+                    var res_json = JSON.parse(xhr.responseText);
+                    osp.innerHTML = res_json.msg;
+                }
+            }
+
+
+
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

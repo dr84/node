@@ -1,0 +1,2 @@
+- 将字符串解析为对象:JSON.parse();
+- 将对象解析为字符串:JSON.stringify();

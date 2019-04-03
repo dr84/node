@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            background: #eee;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        h1 {
+            color: rgb(255, 0, 0);
+        }
+
+        ul {
+            margin-left: -40px;
+        }
+
+        li {
+            color: rgb(29, 29, 232);
+        }
+
+        .hrele {
+            width: 200px;
+            margin: 20px auto;
+            text-align: center;
+            box-shadow: 0px 0px 10px orange;
+        }
+
+        #cssele {
+            margin: 0 auto;
+            width: 510px;
+            height: 130px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 50px rgb(0, 0, 0);
+            background: rgb(247, 247, 189);
+            color: rgb(18, 213, 235);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>DOM 基础知识</h1>
+    <h3>DOM是 document object model(文档对象模型)的缩写,通过DOM可以操作文档内容</h3>
+    <h3>最常用的三种 node 节点类型:Document 文档节点,Element 元素节点,Text 文本节点</h3>
+    <h1>获取元素的方法</h1>
+    <ul>
+        <li>通过id名选择器选择页面元素</li>
+        document.getElementById('id');
+        <hr class='hrele'>
+        <li>通过class名选择器选择页面元素</li>
+        document.getElementByClassName('classname');
+        <hr class='hrele'>
+        <li>通过tagName选择器选择页面元素</li>
+        document.getElementsByTagName('tagname');
+        <hr class='hrele'>
+        <li>通过name选择器选择页面元素</li>
+        document.getElementById('name');
+        <hr class='hrele'>
+        <div id='cssele'>
+            <h2>通过css选择器选择页面元素</h2>
+            id 选择器:
+            class 选择器:
+            标签选择器:
+            在 js 中也可以用 css 选择器选择元素<br>document.querySeletor('相应的css选择器名')<br>document.querySeletorAll 选择('相应的css选择器名')
+        </div>
+
+    </ul>
+    <h1>注意:</h1>
+    <ul>
+        <li>1-驼峰写法的大小写</li>
+        <li>2-通过标签名和类名获取的是一个由所有符合选择条件得元素的数组,而不是单独一个元素</li>
+    </ul>
+
+</body>
+
+</html>
